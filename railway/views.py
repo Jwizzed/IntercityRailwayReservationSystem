@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .models import Station, Route, Reservation, Ticket
 from .forms import RouteSearchForm, ReservationForm
 from django.http import JsonResponse
+
 
 def signup(request):
     if request.method == 'POST':
@@ -75,3 +76,18 @@ def ticket_information(request):
 def ticket_detail(request, ticket_id):
     reservation = Reservation.objects.get(ticket__ticket_id=ticket_id)
     return render(request, 'ticket_detail.html', {'reservation': reservation})
+
+@login_required
+def create_reservation(request, route_id):
+    route = get_object_or_404(Route, pk=route_id)
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save(commit=False)
+            reservation.passenger = request.user.passenger
+            reservation.route = route
+            reservation.save()
+            return redirect('ticket_detail', ticket_id=reservation.ticket.ticket_id)
+    else:
+        form = ReservationForm(initial={'from_station': route.departure_station, 'to_station': route.terminal_station})
+    return render(request, 'pick_seat.html', {'form': form, 'route_id': route_id})
