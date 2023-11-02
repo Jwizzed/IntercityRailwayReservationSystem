@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Your Tickets</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Ticket ID</th>
+            <th>Route</th>
+            <th>Price</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.ticket_id }}</td>
+            <td>{{ ticket.route }}</td>
+            <td>${{ ticket.price }}</td>
+            <td>
+                <a href="{% url 'ticket_detail' ticket.ticket_id %}">View Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

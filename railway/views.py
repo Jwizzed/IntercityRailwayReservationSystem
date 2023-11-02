@@ -77,6 +77,7 @@ def ticket_detail(request, ticket_id):
     reservation = Reservation.objects.get(ticket__ticket_id=ticket_id)
     return render(request, 'ticket_detail.html', {'reservation': reservation})
 
+
 @login_required
 def create_reservation(request, route_id):
     route = get_object_or_404(Route, pk=route_id)
@@ -84,7 +85,7 @@ def create_reservation(request, route_id):
         form = ReservationForm(request.POST)
         if form.is_valid():
             reservation = form.save(commit=False)
-            reservation.passenger = request.user.passenger
+            reservation.user = request.user
             reservation.route = route
             reservation.save()
             return redirect('ticket_detail', ticket_id=reservation.ticket.ticket_id)

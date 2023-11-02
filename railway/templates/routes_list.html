@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Available Routes</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Route ID</th>
+            <th>Departure Station</th>
+            <th>Terminal Station</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Select</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for route in routes %}
+        <tr>
+            <td>{{ route.route_id }}</td>
+            <td>{{ route.departure_station }}</td>
+            <td>{{ route.terminal_station }}</td>
+            <td>{{ route.departure_time }}</td>
+            <td>{{ route.arrival_time }}</td>
+            <td>
+                <a href="{% url 'pick_seat' route.route_id %}">Choose Seat</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
