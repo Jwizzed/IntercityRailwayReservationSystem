@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="seat-selection">
+    <h2>Pick a Seat</h2>
+    <form method="post" action="{% url 'create_reservation' route_id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="confirm-seat">Confirm Seat</button>
+    </form>
+</div>
+{% endblock %}
