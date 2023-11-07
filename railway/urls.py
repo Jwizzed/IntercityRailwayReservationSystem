@@ -1,7 +1,9 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 app_name = 'railway'
+
 urlpatterns = [
+    path('signup/', views.signup, name='signup'),
     path('', views.main_page, name='main_page'),
     path('routes/search/', views.search_route, name='search_route'),
     path('seats/pick/<int:route_id>/', views.pick_seat, name='pick_seat'),
