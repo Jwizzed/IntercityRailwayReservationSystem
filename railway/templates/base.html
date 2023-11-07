@@ -1,31 +1,43 @@
-<!-- base.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Train Reservation System</title>
-    <!-- Link to your stylesheet -->
-    <!-- Add other head elements here -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'railway/styles.css' %}">
+    <!-- Add other head elements and links to CSS files here -->
 </head>
 <body>
-    <header>
-        <!-- Add your site-wide header content here -->
-        <nav>
-            <!-- Add navigation links here -->
-        </nav>
+    <header class="site-header">
+        <div class="container">
+            <h1>Train Reservation System</h1>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="{% url 'railway:main_page' %}">Main</a></li>
+                    <li><a href="{% url 'railway:ticket_information' %}">Ticket Information</a></li>
+                    <div class="site-nav-right">
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
         {% block content %}
-        <!-- The content block will be overridden by other templates -->
+        <!-- The content block will be overridden by child templates -->
         {% endblock content %}
     </main>
 
-    <footer>
-        <!-- Add your site-wide footer content here -->
-    </footer>
+{#    <footer>#}
+{#        <div class="container">#}
+{#            <!-- Add your site-wide footer content here -->#}
+{#            <p>© 2023 Train Reservation System</p>#}
+{#        </div>#}
+{#    </footer>#}
 
-<!--     Link to your JavaScript files -->
+    <!-- Link to your JavaScript files -->
+{#    <script src="{% static 'js/script.js' %}"></script>#}
 </body>
 </html>
