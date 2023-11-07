@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Website</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <a href="{% url 'railway:main_page' %}">Main</a>
+                <a href="{% url 'railway:ticket_information' %}">Ticket Information</a>
+            </div>
+            <div class="navbar-right">
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'signup' %}">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- The rest of your page content goes here -->
+
+</body>
+</html>
