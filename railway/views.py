@@ -42,9 +42,25 @@ def main_page(request):
     return render(request, 'main_page.html', {'form': form})
 
 
+@login_required
 def search_route(request):
-    # ...
-    pass
+    if request.method == 'GET':
+        form = RouteSearchForm(request.GET)
+        if form.is_valid():
+            departure_station = form.cleaned_data['departure_station']
+            terminal_station = form.cleaned_data['terminal_station']
+            date = form.cleaned_data['date']
+
+            routes = Route.objects.filter(
+                departure_station=departure_station,
+                terminal_station=terminal_station,
+                departure_time__date=date
+            )
+            return render(request, 'routes_list.html', {'routes': routes, 'form': form})
+    else:
+        form = RouteSearchForm()
+
+    return render(request, 'main_page.html', {'form': form})
 
 
 @login_required
