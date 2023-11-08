@@ -1,31 +1,32 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h2>Available Routes</h2>
+<h1>Search Results</h1>
+{% if routes %}
 <table>
     <thead>
         <tr>
-            <th>Route ID</th>
             <th>Departure Station</th>
             <th>Terminal Station</th>
             <th>Departure Time</th>
             <th>Arrival Time</th>
-            <th>Select</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         {% for route in routes %}
         <tr>
-            <td>{{ route.route_id }}</td>
             <td>{{ route.departure_station }}</td>
             <td>{{ route.terminal_station }}</td>
             <td>{{ route.departure_time }}</td>
             <td>{{ route.arrival_time }}</td>
             <td>
-                <a href="{% url 'pick_seat' route.route_id %}">Choose Seat</a>
+                <a href="{% url 'railway:pick_seat' route_id=route.id %}" class="btn btn-primary">Book</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+{% else %}
+<p>No routes found.</p>
+{% endif %}
 {% endblock %}

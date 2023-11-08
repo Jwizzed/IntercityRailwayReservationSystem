@@ -26,12 +26,10 @@ def main_page(request):
     if request.method == 'POST':
         form = RouteSearchForm(request.POST)
         if form.is_valid():
-            # Extract information from form
             departure_station = form.cleaned_data['departure_station']
             terminal_station = form.cleaned_data['terminal_station']
             date = form.cleaned_data['date']
 
-            # Fetch the routes based on form data
             routes = Route.objects.filter(
                 departure_station=departure_station,
                 terminal_station=terminal_station,
@@ -44,39 +42,54 @@ def main_page(request):
     return render(request, 'main_page.html', {'form': form})
 
 
+@login_required
 def search_route(request):
-    # This might be handled within the main_page view above, triggered by POST request.
-    # But if you want an AJAX-based search, you would use this view to return data for updating the table asynchronously.
-    # ...
-    pass
+    if request.method == 'GET':
+        form = RouteSearchForm(request.GET)
+        if form.is_valid():
+            departure_station = form.cleaned_data['departure_station']
+            terminal_station = form.cleaned_data['terminal_station']
+            date = form.cleaned_data['date']
+
+            routes = Route.objects.filter(
+                departure_station=departure_station,
+                terminal_station=terminal_station,
+                departure_time__date=date
+            )
+            return render(request, 'routes_list.html', {'routes': routes, 'form': form})
+    else:
+        form = RouteSearchForm()
+
+    return render(request, 'main_page.html', {'form': form})
 
 
+@login_required
 def pick_seat(request, route_id):
+    route = get_object_or_404(Route, pk=route_id)
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
             reservation = form.save(commit=False)
-            reservation.passenger = request.user.passenger
-            reservation.route_id = route_id
+            reservation.user = request.user
+            reservation.route = route
             reservation.save()
             return JsonResponse({'status': 'success'})
         else:
             return JsonResponse({'status': 'error', 'errors': form.errors})
 
-    form = ReservationForm()
-    return render(request, 'pick_seat.html',
-                  {'form': form, 'route_id': route_id})
+    form = ReservationForm(initial={'from_station': route.departure_station, 'to_station': route.terminal_station})
+    return render(request, 'pick_seat.html', {'form': form, 'route_id': route_id})
 
 
 @login_required
 def ticket_information(request):
-    tickets = request.user.passenger.reservation_set.all()
+    tickets = Reservation.objects.filter(user=request.user)
     return render(request, 'ticket_information.html', {'tickets': tickets})
 
 
 @login_required
 def ticket_detail(request, ticket_id):
-    reservation = Reservation.objects.get(ticket__ticket_id=ticket_id)
+    reservation = get_object_or_404(Reservation, ticket__ticket_id=ticket_id, user=request.user)
     return render(request, 'ticket_detail.html', {'reservation': reservation})
 
 

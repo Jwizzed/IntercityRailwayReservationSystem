@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-{#<form method="post" action="{% url 'search_route' %}">#}
-{#    {% csrf_token %}#}
-{#    {{ form.as_p }}#}
-{#    <button type="submit">Search</button>#}
-{#</form>#}
-    <h1>Main</h1>
+<h1>Main Page</h1>
+<form method="get" action="{% url 'railway:search_route' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
 {% endblock %}
