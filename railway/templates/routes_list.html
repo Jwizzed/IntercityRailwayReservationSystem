@@ -20,7 +20,9 @@
             <td>{{ route.departure_time }}</td>
             <td>{{ route.arrival_time }}</td>
             <td>
-                <a href="{% url 'railway:pick_seat' route_id=route.id %}" class="btn btn-primary">Book</a>
+                {% for route in routes %}
+                  <a href="{% url 'railway:pick_seat' route_id=route.route_id %}">Select Seat</a>
+                {% endfor %}
             </td>
         </tr>
         {% endfor %}
