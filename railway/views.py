@@ -5,7 +5,6 @@ from django.contrib.auth import login
 from .models import Station, Route, Reservation, Ticket
 from .forms import RouteSearchForm, ReservationForm
 from django.http import JsonResponse
-import logging
 
 
 def signup(request):
@@ -85,7 +84,7 @@ def pick_seat(request, route_id):
 
 @login_required
 def ticket_information(request):
-    tickets = Reservation.objects.filter(user=request.user)
+    tickets = Reservation.objects.filter(passenger=request.user)
     return render(request, 'ticket_information.html', {'tickets': tickets})
 
 

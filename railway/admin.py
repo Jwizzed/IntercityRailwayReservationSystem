@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+# from .models import Station, Train, Route, Ticket, Reservation, Passenger
 from .models import Station, Train, Route, Ticket, Reservation
 
 admin.site.register(Station)
