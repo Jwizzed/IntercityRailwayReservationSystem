@@ -5,6 +5,7 @@ from django.contrib.auth import login
 from .models import Station, Route, Reservation, Ticket
 from .forms import RouteSearchForm, ReservationForm
 from django.http import JsonResponse
+import logging
 
 
 def signup(request):
@@ -56,6 +57,7 @@ def search_route(request):
                 terminal_station=terminal_station,
                 departure_time__date=date
             )
+            print(routes)
             return render(request, 'routes_list.html', {'routes': routes, 'form': form})
     else:
         form = RouteSearchForm()
