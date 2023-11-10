@@ -5,6 +5,9 @@ from django.contrib.auth import login
 from .models import Station, Route, Reservation, Ticket
 from .forms import RouteSearchForm, ReservationForm
 from django.http import JsonResponse
+from django.shortcuts import render, get_object_or_404
+from .forms import ReservationForm
+from .models import Route
 
 
 def signup(request):
@@ -64,11 +67,6 @@ def search_route(request):
     return render(request, 'main_page.html', {'form': form})
 
 
-from django.shortcuts import render, get_object_or_404
-from .forms import ReservationForm
-from .models import Route
-
-
 @login_required
 def pick_seat(request, route_id):
     route = get_object_or_404(Route, pk=route_id)
@@ -76,10 +74,25 @@ def pick_seat(request, route_id):
     if request.method == 'POST':
         form = ReservationForm(request.POST, route_id=route_id)
         if form.is_valid():
-            reservation = form.save(commit=False)
-            reservation.passenger = request.user
+            selected_seat = form.cleaned_data['seat']
+            selected_seat.is_available = False
+            selected_seat.save()
+            ticket = Ticket.objects.create(
+                route=route,
+                seat=selected_seat,
+                price=0
+            )
+            reservation = Reservation(
+                passenger=request.user,
+                ticket=ticket,
+                from_station=route.departure_station,
+                to_station=route.terminal_station,
+                seat=selected_seat,
+                route=route
+            )
             reservation.save()
-            return JsonResponse({'status': 'success'})
+
+            return redirect('railway:ticket_detail', ticket_id=ticket.ticket_id)
         else:
             return JsonResponse({'status': 'error', 'errors': form.errors})
     else:
@@ -100,18 +113,3 @@ def ticket_detail(request, ticket_id):
     reservation = get_object_or_404(Reservation, ticket__ticket_id=ticket_id, user=request.user)
     return render(request, 'ticket_detail.html', {'reservation': reservation})
 
-
-@login_required
-def create_reservation(request, route_id):
-    route = get_object_or_404(Route, pk=route_id)
-    if request.method == 'POST':
-        form = ReservationForm(request.POST)
-        if form.is_valid():
-            reservation = form.save(commit=False)
-            reservation.user = request.user
-            reservation.route = route
-            reservation.save()
-            return redirect('ticket_detail', ticket_id=reservation.ticket.ticket_id)
-    else:
-        form = ReservationForm(initial={'from_station': route.departure_station, 'to_station': route.terminal_station})
-    return render(request, 'pick_seat.html', {'form': form, 'route_id': route_id})

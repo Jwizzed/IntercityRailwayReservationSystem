@@ -3,7 +3,7 @@
 {% block content %}
 <div id="seat-selection">
     <h2>Pick a Seat</h2>
-    <form method="post" action="{% url 'railway:create_reservation' route_id %}">
+    <form method="post" action="{% url 'railway:main_page' route_id %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" id="confirm-seat">Confirm Seat</button>
