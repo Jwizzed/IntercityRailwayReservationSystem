@@ -64,22 +64,29 @@ def search_route(request):
     return render(request, 'main_page.html', {'form': form})
 
 
+from django.shortcuts import render, get_object_or_404
+from .forms import ReservationForm
+from .models import Route
+
+
 @login_required
 def pick_seat(request, route_id):
     route = get_object_or_404(Route, pk=route_id)
+
     if request.method == 'POST':
-        form = ReservationForm(request.POST)
+        form = ReservationForm(request.POST, route_id=route_id)
         if form.is_valid():
             reservation = form.save(commit=False)
-            reservation.user = request.user
-            reservation.route = route
+            reservation.passenger = request.user
             reservation.save()
             return JsonResponse({'status': 'success'})
         else:
             return JsonResponse({'status': 'error', 'errors': form.errors})
+    else:
+        form = ReservationForm(route_id=route_id)
 
-    form = ReservationForm(initial={'from_station': route.departure_station, 'to_station': route.terminal_station})
-    return render(request, 'pick_seat.html', {'form': form, 'route_id': route_id})
+    return render(request, 'pick_seat.html',
+                  {'form': form, 'route_id': route_id})
 
 
 @login_required

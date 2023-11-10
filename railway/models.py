@@ -37,9 +37,11 @@ class Train(models.Model):
     def __str__(self):
         return f"{self.train_type_str} - {self.train_id}"
 
+
 class Seat(models.Model):
     seat_id = models.CharField(primary_key=True, max_length=255)
     train = models.ForeignKey(Train, on_delete=models.CASCADE, related_name='seats')
+    is_available = models.BooleanField(default=True)
 
     def __str__(self):
         return f"Seat {self.seat_id} on train {self.train.train_id}"
