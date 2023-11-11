@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Ticket Details</h2>
 <div>
-    <p><strong>Ticket ID:</strong> {{ reservation.ticket.ticket_id }}</p>
+    <p><strong>Ticket ID:</strong> {{ reservation.ticket.id }}</p>
     <p><strong>Route:</strong> {{ reservation.route }}</p>
     <p><strong>Departure:</strong> {{ reservation.route.departure_station.station_name }} at {{ reservation.route.departure_time }}</p>
     <p><strong>Arrival:</strong> {{ reservation.route.terminal_station.station_name }} at {{ reservation.route.arrival_time }}</p>

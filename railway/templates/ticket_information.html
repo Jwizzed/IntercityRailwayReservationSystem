@@ -19,7 +19,7 @@
             <td>{{ ticket.route }}</td>
             <td>${{ ticket.price }}</td>
             <td>
-                <a href="{% url 'ticket_detail' ticket.ticket_id %}">View Details</a>
+                <a href="{% url 'railway:ticket_detail' ticket.id %}">View Details</a>
             </td>
         </tr>
         {% endfor %}
