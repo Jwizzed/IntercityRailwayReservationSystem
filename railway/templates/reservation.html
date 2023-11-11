@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<h1>Main Page</h1>
+<h1>Search Route</h1>
 <form method="get" action="{% url 'railway:search_route' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Search</button>
+    {{ form.non_field_errors }}
+    <div class="form-group">
+        <label for="id_departure_station">Departure Station:</label>
+        {{ form.departure_station }}
+    </div>
+    <div class="form-group">
+        <label for="id_terminal_station">Terminal Station:</label>
+        {{ form.terminal_station }}
+    </div>
+    <div class="form-group">
+        <label for="id_date">Date:</label>
+        {{ form.date }}
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
 </form>
 {% endblock %}
