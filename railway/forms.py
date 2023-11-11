@@ -13,18 +13,14 @@ class ReservationForm(forms.ModelForm):
 
     class Meta:
         model = Reservation
-        fields = ['seat', 'from_station', 'to_station']
-        widgets = {
-            'from_station': forms.HiddenInput(),
-            'to_station': forms.HiddenInput(),
-        }
+        fields = ['seat']
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args: object, **kwargs: object) -> object:
         route_id = kwargs.pop('route_id', None)
         super().__init__(*args, **kwargs)
         if route_id:
-            train = Train.objects.get(route__route_id=route_id)
+            route = Route.objects.get(route_id=route_id)
             self.fields['seat'].queryset = Seat.objects.filter(
-                train=train,
+                train=route.train,
                 is_available=True
             )

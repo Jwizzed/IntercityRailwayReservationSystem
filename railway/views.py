@@ -73,16 +73,22 @@ def pick_seat(request, route_id):
 
     if request.method == 'POST':
         form = ReservationForm(request.POST, route_id=route_id)
+
         if form.is_valid():
             selected_seat = form.cleaned_data['seat']
+            if not selected_seat.is_available:
+                return JsonResponse({'status': 'error', 'message': 'Seat not available'})
+
             selected_seat.is_available = False
             selected_seat.save()
+
             ticket = Ticket.objects.create(
                 route=route,
                 seat=selected_seat,
                 price=0
             )
-            reservation = Reservation(
+
+            Reservation.objects.create(
                 passenger=request.user,
                 ticket=ticket,
                 from_station=route.departure_station,
@@ -90,16 +96,13 @@ def pick_seat(request, route_id):
                 seat=selected_seat,
                 route=route
             )
-            reservation.save()
 
             return redirect('railway:ticket_detail', ticket_id=ticket.ticket_id)
         else:
             return JsonResponse({'status': 'error', 'errors': form.errors})
-    else:
-        form = ReservationForm(route_id=route_id)
 
-    return render(request, 'pick_seat.html',
-                  {'form': form, 'route_id': route_id})
+    form = ReservationForm(route_id=route_id)
+    return render(request, 'pick_seat.html', {'form': form, 'route_id': route_id})
 
 
 @login_required
