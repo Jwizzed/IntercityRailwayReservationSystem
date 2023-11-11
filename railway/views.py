@@ -112,9 +112,9 @@ def ticket_information(request):
 @login_required
 def ticket_detail(request, ticket_id):
     try:
-        reservation = Reservation.objects.get(ticket__id=ticket_id, passenger=request.user)
+        reservation = Reservation.objects.get(ticket__id=ticket_id)
     except Reservation.DoesNotExist:
-        return redirect('railway:ticket_information')
+        return redirect('railway:main_page')
 
     return render(request, 'ticket_detail.html', {'reservation': reservation})
 
