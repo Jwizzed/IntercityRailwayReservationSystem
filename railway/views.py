@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from .forms import ReservationForm
 from .models import Route
-from .forms import CustomUserCreationForm, CustomUserLoginForm
+from .forms import CustomUserCreationForm, CustomUserLoginForm, SearchForm
 
 
 
@@ -48,13 +48,27 @@ def all_routes(request):
 
 
 def all_stations(request):
-    stations = Station.objects.all()
-    return render(request, 'stations_list.html', {'stations': stations})
+    search_form = SearchForm(request.GET or None)
+    if search_form.is_valid():
+        query = search_form.cleaned_data.get('query', '')
+        stations = Station.objects.filter(station_name__icontains=query)
+    else:
+        stations = Station.objects.all()
+
+    return render(request, 'stations_list.html',
+                  {'stations': stations, 'search_form': search_form})
 
 
 def all_trains(request):
-    trains = Train.objects.all()
-    return render(request, 'trains_list.html', {'trains': trains})
+    search_form = SearchForm(request.GET or None)
+    if search_form.is_valid():
+        query = search_form.cleaned_data.get('query', '')
+        trains = Train.objects.filter(train_type_str__icontains=query)
+    else:
+        trains = Train.objects.all()
+
+    return render(request, 'trains_list.html',
+                  {'trains': trains, 'search_form': search_form})
 
 @login_required
 def reservation(request):

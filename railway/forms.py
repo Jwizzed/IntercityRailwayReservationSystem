@@ -39,3 +39,7 @@ class CustomUserLoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField(required=False, label='Search')

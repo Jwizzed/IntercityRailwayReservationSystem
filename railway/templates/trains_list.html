@@ -2,6 +2,10 @@
 
 {% block content %}
 <h1>Train List</h1>
+<form method="get" action="">
+    {{ search_form.as_p }}
+    <button type="submit">Search</button>
+</form>
 {% if trains %}
 <table>
     <thead>
