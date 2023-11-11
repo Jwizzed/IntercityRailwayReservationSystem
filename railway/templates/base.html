@@ -17,6 +17,8 @@
                     <li><a href="{% url 'railway:all_routes' %}">All Routes</a></li>
                     <li><a href="{% url 'railway:search_route' %}">Search Route</a></li>
                     <li><a href="{% url 'railway:ticket_information' %}">Ticket Information</a></li>
+                    <li><a href="{% url 'railway:all_stations' %}">Station</a></li>
+                    <li><a href="{% url 'railway:all_trains' %}">Train</a></li>
                     <div class="site-nav-right">
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'logout' %}">Logout</a></li>

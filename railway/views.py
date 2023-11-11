@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.utils import timezone
-from .models import Station, Route, Reservation, Ticket
+from .models import Station, Route, Reservation, Ticket, Train
 from .forms import RouteSearchForm, ReservationForm
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
@@ -46,6 +46,15 @@ def all_routes(request):
     now = timezone.now()
     return render(request, 'routes_list.html', {'routes': routes, 'now': now})
 
+
+def all_stations(request):
+    stations = Station.objects.all()
+    return render(request, 'stations_list.html', {'stations': stations})
+
+
+def all_trains(request):
+    trains = Train.objects.all()
+    return render(request, 'trains_list.html', {'trains': trains})
 
 @login_required
 def reservation(request):
