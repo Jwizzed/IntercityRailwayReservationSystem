@@ -70,6 +70,20 @@ def reservation(request):
 
 
 @login_required
+def cancel_reservation(request, reservation_id):
+    try:
+        reservation = Reservation.objects.get(id=reservation_id, passenger=request.user)
+        ticket = reservation.ticket
+        seat = ticket.seat
+        seat.is_available = True
+        seat.save()
+        reservation.delete()
+        return redirect('railway:ticket_information')
+    except Reservation.DoesNotExist:
+        return redirect('railway:main_page')
+
+
+@login_required
 def search_route(request):
     if request.method == 'GET':
         form = RouteSearchForm(request.GET)

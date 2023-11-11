@@ -11,5 +11,12 @@
     <p><strong>Train:</strong> {{ reservation.ticket.route.train }}</p>
     <p><strong>Seat Number:</strong> {{ reservation.ticket.seat }}</p>
     <p><strong>Reservation ID:</strong> {{ reservation.id }}</p>
+
+    <form action="{% url 'railway:cancel_reservation' reservation.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Cancel Reservation">
+    </form>
+
+
 </div>
 {% endblock %}
