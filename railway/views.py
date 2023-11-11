@@ -93,11 +93,9 @@ def pick_seat(request, route_id):
                 ticket=ticket,
                 from_station=route.departure_station,
                 to_station=route.terminal_station,
-                seat=selected_seat,
-                route=route
             )
 
-            return redirect('railway:ticket_detail', ticket_id=ticket.ticket_id)
+            return redirect('railway:ticket_detail', ticket_id=ticket.id)
         else:
             return JsonResponse({'status': 'error', 'errors': form.errors})
 

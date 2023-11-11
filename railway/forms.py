@@ -19,7 +19,7 @@ class ReservationForm(forms.ModelForm):
         route_id = kwargs.pop('route_id', None)
         super().__init__(*args, **kwargs)
         if route_id:
-            route = Route.objects.get(route_id=route_id)
+            route = Route.objects.get(id=route_id)
             self.fields['seat'].queryset = Seat.objects.filter(
                 train=route.train,
                 is_available=True
