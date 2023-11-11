@@ -42,9 +42,14 @@ def signin(request):
 
 
 def all_routes(request):
-    routes = Route.objects.all()
+    search_form = SearchForm(request.GET or None)
+    if search_form.is_valid():
+        query = search_form.cleaned_data.get('query', '')
+        routes = Route.objects.filter(route_name__icontains=query)
+    else:
+        routes = Route.objects.all()
     now = timezone.now()
-    return render(request, 'routes_list.html', {'routes': routes, 'now': now})
+    return render(request, 'routes_list.html', {'routes': routes, 'now': now, 'search_form': search_form})
 
 
 def all_stations(request):
