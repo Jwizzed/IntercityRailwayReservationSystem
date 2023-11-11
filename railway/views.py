@@ -97,8 +97,8 @@ def search_route(request):
                 terminal_station=terminal_station,
                 departure_time__date=date
             )
-            print(routes)
-            return render(request, 'routes_list.html', {'routes': routes, 'form': form})
+            now = timezone.now()
+            return render(request, 'routes_list.html', {'routes': routes, 'form': form, 'now': now})
     else:
         form = RouteSearchForm()
 
