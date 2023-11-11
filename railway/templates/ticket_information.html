@@ -15,11 +15,11 @@
     {% if tickets %}
         {% for ticket in tickets %}
         <tr>
-            <td>{{ ticket.id }}</td>
-            <td>{{ ticket.route }}</td>
-            <td>${{ ticket.price }}</td>
+            <td>{{ ticket.ticket.id }}</td>
+            <td>{{ ticket.ticket.route }}</td>
+            <td>${{ ticket.ticket.price }}</td>
             <td>
-                <a href="{% url 'railway:ticket_detail' ticket.id %}">View Details</a>
+                <a href="{% url 'railway:ticket_detail' ticket.ticket_id %}">View Details</a>
             </td>
         </tr>
         {% endfor %}

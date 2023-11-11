@@ -8,20 +8,20 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from .forms import ReservationForm
 from .models import Route
+from .forms import CustomUserCreationForm
 
 
 def signup(request):
-    print('signup method', request.method)
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-
             login(request, user)
             return redirect('railway:main_page')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
 
 
 @login_required
