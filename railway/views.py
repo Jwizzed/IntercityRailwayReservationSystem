@@ -11,6 +11,10 @@ from .models import Route
 from .forms import CustomUserCreationForm
 
 
+def main_page(request):
+    return render(request, 'main_page.html')
+
+
 def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -23,9 +27,13 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+def all_routes(request):
+    routes = Route.objects.all()
+    return render(request, 'routes_list.html', {'routes': routes})
+
 
 @login_required
-def main_page(request):
+def reservation(request):
     if request.method == 'POST':
         form = RouteSearchForm(request.POST)
         if form.is_valid():
@@ -42,7 +50,7 @@ def main_page(request):
     else:
         form = RouteSearchForm()
 
-    return render(request, 'main_page.html', {'form': form})
+    return render(request, 'reservation.html', {'form': form})
 
 
 @login_required
@@ -64,7 +72,7 @@ def search_route(request):
     else:
         form = RouteSearchForm()
 
-    return render(request, 'main_page.html', {'form': form})
+    return render(request, 'reservation.html', {'form': form})
 
 
 @login_required
