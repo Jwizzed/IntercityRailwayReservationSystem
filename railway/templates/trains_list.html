@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Train List</h1>
+<form method="get" action="">
+    {{ search_form.as_p }}
+    <button type="submit">Search</button>
+</form>
+{% if trains %}
+<table>
+    <thead>
+        <tr>
+            <th>Train ID</th>
+            <th>Train Type</th>
+            <th>Manufacture Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for train in trains %}
+        <tr>
+            <td>{{ train.id }}</td>
+            <td>{{ train.train_type_str }}</td>
+            <td>{{ train.manufacture_year }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No trains found.</p>
+{% endif %}
+{% endblock %}

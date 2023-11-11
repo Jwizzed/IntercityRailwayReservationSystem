@@ -3,10 +3,13 @@
 {% block content %}
 <div id="seat-selection">
     <h2>Pick a Seat</h2>
-    <form method="post" action="{% url 'create_reservation' route_id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" id="confirm-seat">Confirm Seat</button>
-    </form>
+    <form method="post" action="{% url 'railway:pick_seat' route_id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="from_station" value="{{ route.departure_station.id }}">
+    <input type="hidden" name="to_station" value="{{ route.terminal_station.id }}">
+    <button type="submit" id="confirm-seat">Confirm Seat</button>
+</form>
+
 </div>
 {% endblock %}

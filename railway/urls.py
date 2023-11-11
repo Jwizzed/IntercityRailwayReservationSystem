@@ -1,13 +1,22 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
+
 from . import views
 app_name = 'railway'
-
 urlpatterns = [
-    path('signup/', views.signup, name='signup'),
     path('', views.main_page, name='main_page'),
+    path('signup/', views.signup, name='signup'),
+    path('signin/', auth_views.LoginView.as_view(template_name='signin.html'), name='signin'),
+    path('reservation/', views.reservation, name='reservation'),
+    path('cancel/<uuid:reservation_id>/', views.cancel_reservation,
+         name='cancel_reservation'),
+    path('routes/', views.all_routes, name='all_routes'),
     path('routes/search/', views.search_route, name='search_route'),
-    path('seats/pick/<int:route_id>/', views.pick_seat, name='pick_seat'),
+    path('stations/', views.all_stations, name='all_stations'),
+    path('trains/', views.all_trains, name='all_trains'),
+    path('seats/pick/<route_id>/', views.pick_seat, name='pick_seat'),
     path('tickets/', views.ticket_information, name='ticket_information'),
-    path('tickets/<int:ticket_id>/', views.ticket_detail, name='ticket_detail'),
-    path('reservation/create/<int:route_id>/', views.create_reservation, name='create_reservation'),
+    path('tickets/<ticket_id>/', views.ticket_detail, name='ticket_detail'),
 ]
+
+
