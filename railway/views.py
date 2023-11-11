@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.utils import timezone
 from .models import Station, Route, Reservation, Ticket
 from .forms import RouteSearchForm, ReservationForm
 from django.http import JsonResponse
@@ -9,6 +10,7 @@ from django.shortcuts import render, get_object_or_404
 from .forms import ReservationForm
 from .models import Route
 from .forms import CustomUserCreationForm, CustomUserLoginForm
+
 
 
 def main_page(request):
@@ -41,7 +43,8 @@ def signin(request):
 
 def all_routes(request):
     routes = Route.objects.all()
-    return render(request, 'routes_list.html', {'routes': routes})
+    now = timezone.now()
+    return render(request, 'routes_list.html', {'routes': routes, 'now': now})
 
 
 @login_required
@@ -58,7 +61,8 @@ def reservation(request):
                 terminal_station=terminal_station,
                 departure_time__date=date
             )
-            return render(request, 'routes_list.html', {'routes': routes})
+            now = timezone.now()
+            return render(request, 'routes_list.html', {'routes': routes, 'now': now})
     else:
         form = RouteSearchForm()
 
