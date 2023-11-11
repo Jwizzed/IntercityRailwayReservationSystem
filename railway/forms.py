@@ -1,6 +1,6 @@
 from django import forms
 from .models import Route, Reservation, Station, Ticket, Seat, Train
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -33,3 +33,9 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = UserCreationForm.Meta.fields + ('email', 'firstname', 'lastname', 'ciz_id', 'phone', 'birthdate')
+
+
+class CustomUserLoginForm(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password']

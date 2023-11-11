@@ -18,9 +18,13 @@
                     <li><a href="{% url 'railway:search_route' %}">Book</a></li>
                     <li><a href="{% url 'railway:ticket_information' %}">Ticket Information</a></li>
                     <div class="site-nav-right">
-                        <li><a href="{% url 'login' %}">Login</a></li>
-                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    </div>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'railway:signin' %}">Sign In</a></li>
+                        <li><a href="{% url 'railway:signup' %}">Sign Up</a></li>
+                    {% endif %}
+                </div>
                 </ul>
             </nav>
         </div>

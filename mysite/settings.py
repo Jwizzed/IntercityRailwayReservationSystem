@@ -85,7 +85,9 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'railway.Passenger'
+LOGIN_URL = 'railway:signin'
 LOGIN_REDIRECT_URL = 'railway:main_page'
+LOGOUT_REDIRECT_URL = 'railway:main_page'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
