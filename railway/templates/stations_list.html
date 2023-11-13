@@ -1,33 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Station List</h1>
-<form method="get" action="">
-    {{ search_form.as_p }}
-    <button type="submit">Search</button>
-</form>
-{% if stations %}
-<table>
-    <thead>
-        <tr>
-            <th>Station Name</th>
-            <th>City</th>
-            <th>District</th>
-            <th>Sub-District</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for station in stations %}
-        <tr>
-            <td>{{ station.station_name }}</td>
-            <td>{{ station.city }}</td>
-            <td>{{ station.district }}</td>
-            <td>{{ station.sub_dist }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>No stations found.</p>
-{% endif %}
+    <div class="search-route-page">
+        <h1>Station List</h1>
+        <div class="form-container">
+            <form method="get" action="">
+                <div class="form-group">
+                    {{ search_form.as_p }}
+                </div>
+                <button class="btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+        {% if stations %}
+            <table>
+                <thead>
+                <tr>
+                    <th>Station Name</th>
+                    <th>City</th>
+                    <th>District</th>
+                    <th>Sub-District</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for station in stations %}
+                    <tr>
+                        <td>{{ station.station_name }}</td>
+                        <td>{{ station.city }}</td>
+                        <td>{{ station.district }}</td>
+                        <td>{{ station.sub_dist }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No stations found.</p>
+        {% endif %}
+    </div>
 {% endblock %}
