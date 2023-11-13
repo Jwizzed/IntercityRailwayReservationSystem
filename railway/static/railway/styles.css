@@ -5,8 +5,8 @@ body {
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    width: 75%;
+    margin: 20px auto; /* This adds 20px margin to the top and bottom */
     overflow: hidden;
 }
 
@@ -14,6 +14,7 @@ body {
     background-color: #333;
     color: #fff;
     padding: 10px 0;
+    margin-bottom: 20px; /* This adds 20px margin to the bottom of the header */
 }
 
 .site-header h1 {
@@ -23,13 +24,13 @@ body {
 
 .site-nav ul {
     list-style-type: none;
-    margin: 0;
+    margin-top: 20px;
     padding: 0;
 }
 
 .site-nav li {
     display: inline;
-    margin-right: 10px;
+    margin: 0 10px; /* This adds 10px margin to the left and right of each list item */
 }
 
 .site-nav a {
@@ -46,12 +47,128 @@ body {
     float: right;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
+.search-route-page h1 {
+    font-size: 2.5em; /* Larger font size */
+    font-weight: 700; /* Bolder text */
+    color: #333; /* Dark grey color */
+    text-align: center; /* Center-aligned text */
+    margin-top: 20px; /* Space above the title */
+    margin-bottom: 30px; /* Space below the title */
+    padding: 10px 0; /* Padding at the top and bottom */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Optional: Custom font */
+}
+
+.form-container {
+    background-color: #f8f8f8; /* Light background for the form container */
+    padding: 20px; /* Padding around the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 600px; /* Max width for the form container */
+    margin: 20px auto; /* Center the container with auto margins */
+}
+
+.guide-section {
+    margin: 20px 10px; /* Adds 10px margin to left and right sides */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.guide-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.guide-list li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.guide-list strong {
+    color: #333;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 75%;
+        margin: 10px auto;
+        padding: 0 10px; /* Adds 10px padding to the left and right sides */
+    }
+
+    .guide-section {
+        padding: 15px;
+        margin: 10px 5px; /* Slightly reduce the side margin for smaller screens */
+    }
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space out each form group */
+}
+
+.form-group label {
+    display: block; /* Make labels block elements */
+    margin-bottom: 5px; /* Add some space below the label */
+    font-weight: bold; /* Make label text bold */
+}
+
+.form-group input,
+.form-group select {
+    width: 100%; /* Full width for inputs and selects */
+    padding: 8px 10px; /* Padding inside the input/select elements */
+    border: 1px solid #ccc; /* Border for input/select elements */
+    border-radius: 4px; /* Rounded corners for input/select elements */
+    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+}
+
+button.btn-primary {
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color for the button */
+    padding: 10px 15px; /* Padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: inline-block; /* Align button properly */
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+@media screen and (max-width: 768px) {
+    /* Responsive adjustments */
+    .form-group input,
+    .form-group select {
+        width: 100%; /* Ensure full width on smaller screens */
+    }
+}
+
+table {
     width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+    }
+
+    /* Other responsive styles */
 }

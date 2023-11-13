@@ -1,45 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Search Results</h1>
-<form method="get" action="">
-    {{ search_form.as_p }}
-    <button type="submit">Search</button>
-</form>
+    <div class="search-route-page">
+        <h1>Search Results</h1>
+        <div class="form-container">
+            <form method="get" action="">
+                <div class="form-group">
+                    {{ search_form.as_p }}
+                    <button class="btn btn-primary" type="submit">Search
+                    </button>
+                </div>
+            </form>
+        </div>
 
-{% if routes %}
-<table>
-    <thead>
-        <tr>
-            <th>Departure Station</th>
-            <th>Terminal Station</th>
-            <th>Departure Time</th>
-            <th>Arrival Time</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for route in routes %}
-        <tr>
-            <td>{{ route.departure_station }}</td>
-            <td>{{ route.terminal_station }}</td>
-            <td>{{ route.departure_time }}</td>
-            <td>{{ route.arrival_time }}</td>
-            <td>
-              {% if user.is_authenticated %}
-                   {% if route.departure_time.date == now.date %}
-                       <a href="{% url 'railway:pick_seat' route_id=route.id %}">Select Seat</a>
-                   {% else %}
-                       Unavailable
-                   {% endif %}
-               {% else %}
-                   <a href="{% url 'railway:signin' %}">Login to select seat</a>
-               {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>No routes found.</p>
-{% endif %}
+        {% if routes %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Departure Station</th>
+                    <th scope="col">Terminal Station</th>
+                    <th scope="col">Departure Time</th>
+                    <th scope="col">Arrival Time</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for route in routes %}
+                    <!-- Table rows here -->
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No routes found.</p>
+        {% endif %}
+    </div>
 {% endblock %}

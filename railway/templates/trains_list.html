@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="search-route-page">
 <h1>Train List</h1>
+    <div class="form-container">
 <form method="get" action="">
-    {{ search_form.as_p }}
-    <button type="submit">Search</button>
+    <div class="form-group">
+        {{ search_form.as_p }}
+    </div>
+
+    <button class="btn-primary" type="submit">Search</button>
 </form>
+</div>
 {% if trains %}
 <table>
     <thead>
@@ -28,4 +34,5 @@
 {% else %}
 <p>No trains found.</p>
 {% endif %}
+</div>
 {% endblock %}
