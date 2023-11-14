@@ -1,4 +1,14 @@
 /* styles.css */
+html, body {
+    height: 100%; /* Full height */
+    margin: 0; /* Remove default margin */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+}
+main {
+    flex: 1; /* Flex grow to take available space */
+    /* Other styling for main */
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -11,7 +21,7 @@ body {
 }
 
 .site-header {
-    background-color: #333;
+    background-color: #2e2b52;
     color: #fff;
     padding: 10px 0;
     margin-bottom: 20px; /* This adds 20px margin to the bottom of the header */
@@ -40,13 +50,17 @@ body {
 }
 
 .site-nav a:hover {
-    background-color: #555;
+    background-color: #f68282;
+    color: #333333;
 }
 
 .site-nav-right {
     float: right;
 }
+.search-route-page{
+    margin: 20px;
 
+}
 .search-route-page h1 {
     font-size: 2.5em; /* Larger font size */
     font-weight: 700; /* Bolder text */
@@ -169,6 +183,204 @@ th {
     .container {
         width: 100%;
     }
+}
 
-    /* Other responsive styles */
+.station-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden; /* This will respect the border-radius */
+}
+
+.station-table th,
+.station-table td {
+    padding: 12px 15px; /* Increased padding for better readability */
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.station-table th {
+    background-color: #1f1f44; /* Changed to a more vibrant color */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase; /* Optional: makes headers stand out */
+}
+
+.station-table tr:nth-child(even) {
+    background-color: #f8f8f8; /* Zebra-striping for rows */
+}
+
+.station-table tr:hover {
+    background-color: #e8e8e8; /* Hover effect for rows */
+}
+
+/* Responsive Adjustments for Smaller Screens */
+@media screen and (max-width: 480px) {
+    .station-table,
+    .station-table thead,
+    .station-table tbody,
+    .station-table th,
+    .station-table td,
+    .station-table tr {
+        display: block;
+    }
+
+    .station-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .station-table tr {
+        border: 1px solid #ddd;
+        margin-bottom: 5px;
+        padding: 8px;
+    }
+
+    .station-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    .station-table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    /* Label the data */
+    .station-table td:nth-of-type(1):before { content: "Station Name"; }
+    .station-table td:nth-of-type(2):before { content: "City"; }
+    .station-table td:nth-of-type(3):before { content: "District"; }
+    .station-table td:nth-of-type(4):before { content: "Sub-District"; }
+}
+
+@keyframes slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.slide-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slide 10s linear infinite;
+}
+
+.train {
+    padding-top: 20px;
+    margin-bottom: -10px;
+}
+/* Ticket Detail */
+.ticket-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f4f4f4;
+    min-height: 70vh;
+}
+
+.ticket-card {
+    background: #FFDE59;
+    width: 70%;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.ticket-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: black;
+    z-index: 1;
+    position: relative;
+}
+
+.ticket-info {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.ticket-info p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 10px 0;
+    color: #333;
+}
+
+.detail-title {
+    font-weight: 600;
+    color: black;
+}
+
+.cancel-form {
+    text-align: center;
+    margin-top: 20px;
+    z-index: 1;
+    position: relative;
+}
+
+.cancel-button {
+    background-color: #ff3860;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-button:hover {
+    background-color: #e5001c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Footer Styles */
+footer {
+   background-color: #1f1f44; /* Dark background */
+    color: #fff; /* White text color */
+    text-align: center; /* Center align text */
+    padding: 20px 0; /* Padding for top and bottom */
+    font-size: 14px; /* Font size */
+}
+
+footer .container {
+    width: 80%; /* Width of the container */
+    margin: 0 auto; /* Center the container */
+}
+
+footer p {
+    margin: 10px 0; /* Margin for top and bottom */
+}
+
+footer a {
+    color: #fff; /* White text color for links */
+    text-decoration: none; /* No underline for links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover for links */
 }

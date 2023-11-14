@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Your Tickets</h2>
-<table>
+    <div class="search-route-page">
+<h1>Your Tickets</h1>
+<table class="station-table">
     <thead>
         <tr>
             <th>Ticket ID</th>
@@ -28,4 +29,5 @@
     {% endif %}
     </tbody>
 </table>
+</div>
 {% endblock %}

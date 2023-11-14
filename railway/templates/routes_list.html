@@ -13,7 +13,7 @@
         </div>
 
         {% if routes %}
-            <table class="table">
+            <table class="station-table">
                 <thead>
                 <tr>
                     <th scope="col">Departure Station</th>
@@ -25,7 +25,23 @@
                 </thead>
                 <tbody>
                 {% for route in routes %}
-                    <!-- Table rows here -->
+                    <tr>
+                        <td>{{ route.departure_station }}</td>
+                        <td>{{ route.terminal_station }}</td>
+                        <td>{{ route.departure_time }}</td>
+                        <td>{{ route.arrival_time }}</td>
+                        <td>
+                            {% if user.is_authenticated %}
+                                {% if route.departure_time.date == now.date %}
+                                    <a href="{% url 'railway:pick_seat' route_id=route.id %}">Select Seat</a>
+                                {% else %}
+                                    Unavailable
+                                {% endif %}
+                            {% else %}
+                                <a href="{% url 'railway:signin' %}">Login to select seat</a>
+                            {% endif %}
+                        </td>
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>

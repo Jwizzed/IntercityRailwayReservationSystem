@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Ticket Details</h2>
-<div>
-    <p><strong>Ticket ID:</strong> {{ reservation.ticket.id }}</p>
-    <p><strong>Route:</strong> {{ reservation.ticket.route }}</p>
-    <p><strong>Departure:</strong> {{ reservation.from_station }} at {{ reservation.ticket.route.departure_time }}</p>
-    <p><strong>Arrival:</strong> {{ reservation.to_station }} at {{ reservation.ticket.route.arrival_time }}</p>
-    <p><strong>Passenger:</strong> {{ reservation.passenger.firstname }}</p>
-    <p><strong>Train:</strong> {{ reservation.ticket.route.train }}</p>
-    <p><strong>Seat Number:</strong> {{ reservation.ticket.seat }}</p>
-    <p><strong>Reservation ID:</strong> {{ reservation.id }}</p>
-
-    <form action="{% url 'railway:cancel_reservation' reservation.id %}" method="post">
-    {% csrf_token %}
-    <input type="submit" value="Cancel Reservation">
-    </form>
-
-
+<div class="ticket-details-container">
+    <div class="ticket-card">
+        <h2>Ticket Details</h2>
+        <div class="ticket-info">
+            <p><span class="detail-title">Ticket ID:</span> {{ reservation.ticket.id }}</p>
+            <p><span class="detail-title">Route:</span> {{ reservation.ticket.route }}</p>
+            <p><span class="detail-title">Departure:</span> {{ reservation.from_station }} at {{ reservation.ticket.route.departure_time }}</p>
+            <p><span class="detail-title">Arrival:</span> {{ reservation.to_station }} at {{ reservation.ticket.route.arrival_time }}</p>
+            <p><span class="detail-title">Passenger:</span> {{ reservation.passenger.firstname }}</p>
+            <p><span class="detail-title">Train:</span> {{ reservation.ticket.route.train }}</p>
+            <p><span class="detail-title">Seat Number:</span> {{ reservation.ticket.seat }}</p>
+            <p><span class="detail-title">Reservation ID:</span> {{ reservation.id }}</p>
+        </div>
+        <form action="{% url 'railway:cancel_reservation' reservation.id %}" method="post" class="cancel-form">
+            {% csrf_token %}
+            <button type="submit" class="cancel-button">Cancel Reservation</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
