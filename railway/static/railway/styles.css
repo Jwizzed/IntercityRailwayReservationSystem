@@ -11,7 +11,7 @@ body {
 }
 
 .site-header {
-    background-color: #333;
+    background-color: #2e2b52;
     color: #fff;
     padding: 10px 0;
     margin-bottom: 20px; /* This adds 20px margin to the bottom of the header */
@@ -40,7 +40,8 @@ body {
 }
 
 .site-nav a:hover {
-    background-color: #555;
+    background-color: #f68282;
+    color: #333333;
 }
 
 .site-nav-right {
@@ -250,3 +251,21 @@ th {
     .station-table td:nth-of-type(3):before { content: "District"; }
     .station-table td:nth-of-type(4):before { content: "Sub-District"; }
 }
+
+@keyframes slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.slide-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slide 10s linear infinite;
+}
+
+.train {
+    padding-top: 20px;
+    margin-bottom: -10px;
+}
+

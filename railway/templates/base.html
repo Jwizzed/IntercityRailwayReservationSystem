@@ -10,7 +10,12 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <h1>Train Reservation System</h1>
+            <h1 class="slide-text">
+                <img src="{% static "images/train-ticket.png" %}" alt="train-icon"
+                height="40">
+                Train Reservation System
+                <img class="train" src="{% static "images/train.png" %}" alt="train" height="40">
+            </h1>
             <nav class="site-nav">
                 <ul>
                     <li><a href="{% url 'railway:main_page' %}">Main</a></li>
