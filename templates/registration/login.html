@@ -1,37 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>login | KU Polls</title>
-    <link rel="stylesheet" href="{% static 'railway/styles.css' %}">
-</head>
-<body>
-<div class="form-container">
-    <h1>login</h1>
-    <form method="Post">
-        {% csrf_token %}
-        <div class="login-form">
-            <div class="error-login">
-                {{ form.non_field_errors }}
-            </div>
-            {{ form.username.label_tag }}
-            {{ form.username }}
-            {{ form.password.label_tag }}
-            {{ form.password }}
-            {% if error_message %}
-                <p class="error"><strong>{{ error_message }}</strong></p>
-            {% endif %}
-            <div class="login-button-container">
-                <button class="login-button" type="submit">login</button>
-                <button class="login-button" type="button"
-                        onclick="location.href='{% url 'railway:main_page' %}'">view
-                    as guest
-                </button>
-                <input type="hidden" name="next" value="{{ next }}"/>
-            </div>
-        </div>
-    </form>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="search-route-page">  <!-- Use the same wrapper div for consistent spacing and alignment -->
+    <h1>Sign In</h1>  <!-- Adjust heading size to match other pages -->
+    <div class="form-container">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

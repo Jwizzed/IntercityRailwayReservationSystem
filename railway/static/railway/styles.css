@@ -1,4 +1,14 @@
 /* styles.css */
+html, body {
+    height: 100%; /* Full height */
+    margin: 0; /* Remove default margin */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+}
+main {
+    flex: 1; /* Flex grow to take available space */
+    /* Other styling for main */
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -47,7 +57,10 @@ body {
 .site-nav-right {
     float: right;
 }
+.search-route-page{
+    margin: 20px;
 
+}
 .search-route-page h1 {
     font-size: 2.5em; /* Larger font size */
     font-weight: 700; /* Bolder text */
@@ -268,4 +281,109 @@ th {
     padding-top: 20px;
     margin-bottom: -10px;
 }
+/* Train Detail */
+.ticket-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
 
+.ticket-card {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.ticket-card h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #333;
+    text-align: left;
+}
+
+.ticket-info {
+    border: 1px solid #eee;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.ticket-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-title {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.cancel-form {
+    text-align: center;
+}
+
+.cancel-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #0056b3;
+}
+
+
+.cancel-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Footer Styles */
+footer {
+   background-color: #1f1f44; /* Dark background */
+    color: #fff; /* White text color */
+    text-align: center; /* Center align text */
+    padding: 20px 0; /* Padding for top and bottom */
+    font-size: 14px; /* Font size */
+}
+
+footer .container {
+    width: 80%; /* Width of the container */
+    margin: 0 auto; /* Center the container */
+}
+
+footer p {
+    margin: 10px 0; /* Margin for top and bottom */
+}
+
+footer a {
+    color: #fff; /* White text color for links */
+    text-decoration: none; /* No underline for links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+}
