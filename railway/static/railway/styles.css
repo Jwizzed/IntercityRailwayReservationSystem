@@ -1,12 +1,12 @@
 /* styles.css */
 html, body {
-    height: 100%; /* Full height */
-    margin: 0; /* Remove default margin */
+    height: 100%;
+    margin: 0;
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column;
 }
 main {
-    flex: 1; /* Flex grow to take available space */
+    flex: 1;
     /* Other styling for main */
 }
 body {
@@ -16,7 +16,7 @@ body {
 
 .container {
     width: 75%;
-    margin: 20px auto; /* This adds 20px margin to the top and bottom */
+    margin: 20px auto;
     overflow: hidden;
 }
 
@@ -24,7 +24,7 @@ body {
     background-color: #FFDE59;
     color: #3b3737;
     padding: 10px 0;
-    margin-bottom: 20px; /* This adds 20px margin to the bottom of the header */
+    margin-bottom: 20px;
 }
 
 .site-header h1 {
@@ -40,7 +40,7 @@ body {
 
 .site-nav li {
     display: inline;
-    margin: 0 10px; /* This adds 10px margin to the left and right of each list item */
+    margin: 0 10px;
 }
 
 .site-nav a {
@@ -63,30 +63,30 @@ body {
 
 }
 .search-route-page h1 {
-    font-size: 2.5em; /* Larger font size */
-    font-weight: 700; /* Bolder text */
-    color: #333; /* Dark grey color */
-    text-align: center; /* Center-aligned text */
-    margin-top: 20px; /* Space above the title */
-    margin-bottom: 30px; /* Space below the title */
-    padding: 10px 0; /* Padding at the top and bottom */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Optional: Custom font */
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 10px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /* main page */
 .form-container {
-    background-color: rgba(255, 222, 89, 0.55); /* Light background for the form container */
-    padding: 20px; /* Padding around the form */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    max-width: 600px; /* Max width for the form container */
-    margin: 20px auto; /* Center the container with auto margins */
+    background-color: rgba(255, 222, 89, 0.55);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
 }
 .guide-title {
-    text-align: center; /* Centers the title text */
-    margin-bottom: 30px; /* Adds some space below the title */
-    color: #333; /* Color for the title */
-    font-size: 2rem; /* Increased font size for the title */
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2rem;
 }
 
 .guide-section {
@@ -99,7 +99,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.1rem;
     line-height: 1.8;
-    position: relative; /* For absolute positioning of pseudo-elements */
+    position: relative;
 }
 
 .guide-columns {
@@ -114,26 +114,26 @@ body {
     padding-left: 0;
 }
 .guide-item {
-    position: relative; /* For positioning the pseudo-elements */
+    position: relative;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+    transition: background-color 0.3s ease, transform 0.3s ease;
     /* ... other styles remain unchanged ... */
 }
 
 .guide-item:hover {
-    background-color: rgba(255, 255, 255, 1); /* Lighten the background on hover */
-    transform: translateY(-5px); /* Slight lift effect */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    background-color: rgba(255, 255, 255, 1);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 
 .guide-list strong {
     color: #555;
-    display: block; /* Makes the strong tag display as block for emphasis */
-    margin-bottom: 5px; /* Adds spacing below the strong tag */
+    display: block;
+    margin-bottom: 5px;
 }
 
 
@@ -141,53 +141,53 @@ body {
     .container {
         width: 75%;
         margin: 10px auto;
-        padding: 0 10px; /* Adds 10px padding to the left and right sides */
+        padding: 0 10px;
     }
 
     .guide-section {
         padding: 15px;
-        margin: 10px 5px; /* Slightly reduce the side margin for smaller screens */
+        margin: 10px 5px;
     }
 }
 
 .form-group {
-    margin-bottom: 15px; /* Space out each form group */
+    margin-bottom: 15px;
 }
 
 .form-group label {
-    display: block; /* Make labels block elements */
-    margin-bottom: 5px; /* Add some space below the label */
-    font-weight: bold; /* Make label text bold */
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .form-group input,
 .form-group select {
-    width: 100%; /* Full width for inputs and selects */
-    padding: 8px 10px; /* Padding inside the input/select elements */
-    border: 1px solid #ccc; /* Border for input/select elements */
-    border-radius: 4px; /* Rounded corners for input/select elements */
-    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 button.btn-primary {
-    background-color: #FF3131; /* Primary button color */
-    color: white; /* Text color for the button */
-    padding: 10px 15px; /* Padding inside the button */
-    border: none; /* Remove default border */
-    border-radius: 4px; /* Rounded corners for the button */
-    cursor: pointer; /* Pointer cursor on hover */
-    display: inline-block; /* Align button properly */
+    background-color: #FF3131;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
 }
 
 button.btn-primary:hover {
-    background-color: #ff5a5a; /* Darker shade on hover */
+    background-color: #ff5a5a;
 }
 
 @media screen and (max-width: 768px) {
     /* Responsive adjustments */
     .form-group input,
     .form-group select {
-        width: 100%; /* Ensure full width on smaller screens */
+        width: 100%;
     }
 }
 
@@ -220,29 +220,29 @@ th {
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     border-radius: 8px;
-    overflow: hidden; /* This will respect the border-radius */
+    overflow: hidden;
 }
 
 .station-table th,
 .station-table td {
-    padding: 12px 15px; /* Increased padding for better readability */
+    padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #f0f0f0;
 }
 
 .station-table th {
-    background-color: #FFDE59; /* Changed to a more vibrant color */
+    background-color: #FFDE59;
     color: #3b3737;
     font-weight: bold;
-    text-transform: uppercase; /* Optional: makes headers stand out */
+    text-transform: uppercase;
 }
 
 .station-table tr:nth-child(even) {
-    background-color: #f8f8f8; /* Zebra-striping for rows */
+    background-color: #f8f8f8;
 }
 
 .station-table tr:hover {
-    background-color: rgba(255, 222, 89, 0.55); /* Hover effect for rows */
+    background-color: rgba(255, 222, 89, 0.55);
 }
 
 /* Responsive Adjustments for Smaller Screens */
@@ -429,27 +429,27 @@ th {
 
 /* Footer Styles */
 footer {
-   background-color: #1f1f44; /* Dark background */
-    color: #fff; /* White text color */
-    text-align: center; /* Center align text */
-    padding: 20px 0; /* Padding for top and bottom */
-    font-size: 14px; /* Font size */
+   background-color: #1f1f44;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
 }
 
 footer .container {
-    width: 80%; /* Width of the container */
-    margin: 0 auto; /* Center the container */
+    width: 80%;
+    margin: 0 auto;
 }
 
 footer p {
-    margin: 10px 0; /* Margin for top and bottom */
+    margin: 10px 0;
 }
 
 footer a {
-    color: #fff; /* White text color for links */
-    text-decoration: none; /* No underline for links */
+    color: #fff;
+    text-decoration: none;
 }
 
 footer a:hover {
-    text-decoration: underline; /* Underline on hover for links */
+    text-decoration: underline;
 }
