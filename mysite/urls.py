@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.shortcuts import redirect
 import railway.views as views
 
 urlpatterns = [
+    path("", lambda request: redirect('railway/'), name='index'),
     path("railway/", include("railway.urls")),
     path("admin/", admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', views.signup, name='signup'),
 ]
+
