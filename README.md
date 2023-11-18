@@ -3,20 +3,6 @@ IntercityRailwayReservationSystem is (Boom will handle this)..
 
 
 ## Installation
-### Automated Installation
-**For macOS**:
-1) Download the install.sh script from the repository.
-2) Open Terminal and navigate to the folder containing install.sh.
-3) Run the script with ./install.sh.
-
-**For Windows**:
-
-1) Download the install.bat script from the repository.
-2) Open Command Prompt and navigate to the folder containing install.bat.
-3) Run the script by typing install.bat and pressing Enter.
-
-
-### Manual Installation
 **For macOS**:
 
 1) Clone the repository:
@@ -26,13 +12,13 @@ cd IntercityRailwayReservationSystem
 ```
 2) Check if Python is installed:
 ```
-python3 --version || python --version
+python --version || python --version
 ```
 If Python is not installed, download and install it from python.org.
 
 3) Create a virtual environment:
 ```
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
 ```
 4) Install dependencies:
@@ -61,7 +47,7 @@ cd IntercityRailwayReservationSystem
 ```
 2) Check if Python is installed
 ```
-python3 --version || python --version
+python --version || python --version
 ```
 3) Create a virtual environment:
 ```
