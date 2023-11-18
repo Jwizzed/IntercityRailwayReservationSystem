@@ -1,6 +1,14 @@
 # IntercityRailwayReservationSystem
-IntercityRailwayReservationSystem is (Boom will handle this)..
+IntercityRailwayReservationSystem is a part of the "Database Systems for Software and Knowledge Engineers"(01219231) course.
+It's a web application that mainly focuses on the database workflow of the railway ticket system. The aim of this project
+is to create a mock  of the real business and integrate the database system to answer the business question.
 
+## Goals
+The user can...
+- Book the train ticket using the web app
+- View all tickets
+- inspect the ticket detail
+- Search routes
 
 ## Installation
 **For macOS**:
